@@ -3,32 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SpillKernel | Tools, Automation, and Sharp Interfaces</title>
+    <title>SpillKernel | Windows Tooling, Automation, and Operational Software</title>
     <meta
       name="description"
-      content="SpillKernel builds sharp tools, automation systems, and developer-facing experiences with a bias toward clarity and execution."
+      content="SpillKernel builds Windows-first tools, PowerShell automation, desktop utilities, field systems, and install surfaces across PowerShell, Python, C#, Astro, and HTML."
     />
+    <meta name="theme-color" content="#101722" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="ambient-glow ambient-glow-left"></div>
+    <div class="ambient-glow ambient-glow-right"></div>
+
     <div class="site-shell">
       <header class="topbar">
         <a class="brand" href="#hero">
           <span class="brand-mark">SK</span>
           <span class="brand-copy">
             <strong>SpillKernel</strong>
-            <small>Systems / Tooling / Automation</small>
+            <small>Windows Tooling / Automation / Systems</small>
           </span>
         </a>
         <nav class="nav">
-          <a href="#work">Work</a>
-          <a href="#principles">Principles</a>
+          <a href="#lanes">Lanes</a>
+          <a href="#repos">Repos</a>
+          <a href="#install">Install</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -36,123 +42,235 @@
       <main>
         <section class="hero reveal" id="hero">
           <div class="hero-copy">
-            <p class="eyebrow">Independent builder with a systems mindset</p>
+            <p class="eyebrow">13 repositories across five stacks</p>
             <h1>
-              SpillKernel ships
-              <span>sharp tools</span>
-              for work that should feel lighter.
+              SpillKernel builds
+              <span>Windows-native tools</span>
+              and operational software that ships close to the operator.
             </h1>
             <p class="lede">
-              I design and ship technical products that live close to the
-              operator: terminal workflows, automation systems, internal tools,
-              and interfaces that keep signal high and friction low.
+              The work is not one narrow product lane. It spans PowerShell
+              automation, terminal tooling, Python utilities, C# desktop apps,
+              field workflows, and a smaller layer of web and commerce builds.
+              The site should feel like a control surface for that mix.
             </p>
             <div class="hero-actions">
               <a class="button button-primary" href="https://github.com/SpillKernelX" target="_blank" rel="noreferrer">
-                View GitHub
+                Browse GitHub
               </a>
-              <a class="button button-secondary" href="#command-deck">
-                Install Surfaces
+              <a class="button button-secondary" href="#repos">
+                View Repository Map
               </a>
             </div>
           </div>
 
           <aside class="hero-panel">
             <div class="panel-card panel-card-large">
-              <p class="panel-label">Current orientation</p>
+              <p class="panel-label">Stack profile</p>
               <ul class="signal-list">
                 <li>
-                  <span>Focus</span>
-                  <strong>Developer tools that feel product-grade</strong>
+                  <span>Primary spread</span>
+                  <strong>PowerShell 4 / Python 3 / C# 2 / Astro 2 / HTML 2</strong>
                 </li>
                 <li>
-                  <span>Pattern</span>
-                  <strong>Automate the boring, preserve operator control</strong>
+                  <span>Project bias</span>
+                  <strong>Windows-first tooling, utilities, diagnostics, install flows</strong>
                 </li>
                 <li>
-                  <span>Edge</span>
-                  <strong>Fast install paths, legible UX, durable systems</strong>
+                  <span>Execution mode</span>
+                  <strong>Desktop apps, shell products, field systems, lean web builds</strong>
                 </li>
               </ul>
             </div>
             <div class="panel-card panel-card-accent">
-              <p class="panel-label">Live thread</p>
+              <p class="panel-label">Portfolio signal</p>
               <p class="panel-callout">
-                Building a brand surface for <code>spillkernel.com</code> that
-                can scale from one landing page into a full project network.
+                This is a builder profile with an operator mindset: practical,
+                systems-oriented, Windows-heavy, and comfortable across shell,
+                desktop, browser, and install surfaces.
               </p>
             </div>
           </aside>
         </section>
 
-        <section class="work reveal" id="work">
+        <section class="lane-strip reveal">
+          <article class="metric-card">
+            <span class="metric-number">13</span>
+            <span class="metric-label">Total repositories</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-number">10</span>
+            <span class="metric-label">Private workstreams</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-number">3</span>
+            <span class="metric-label">Public distribution surfaces</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-number">5</span>
+            <span class="metric-label">Primary stacks in active rotation</span>
+          </article>
+        </section>
+
+        <section class="lanes reveal" id="lanes">
           <div class="section-heading">
-            <p class="eyebrow">Selected direction</p>
-            <h2>Projects that prioritize clarity over ceremony.</h2>
+            <p class="eyebrow">Project lanes</p>
+            <h2>The work clusters into four clear product lines.</h2>
           </div>
-          <div class="work-grid">
-            <article class="work-card">
-              <p class="card-tag">Tooling</p>
-              <h3>Prompt and terminal experiences</h3>
+
+          <div class="lane-grid">
+            <article class="lane-card lane-card-shell">
+              <p class="card-tag">Shell / Automation</p>
+              <h3>PowerShell-first tooling and install surfaces</h3>
               <p>
-                Command-line products that do not stop at function. Fast paths,
-                good defaults, and interfaces that reward repeat use.
+                Terminal-native experiences, script collections, portable
+                installers, and public distribution flows built for repeat use
+                on Windows machines.
+              </p>
+              <ul class="repo-list">
+                <li>posh-theme-browser</li>
+                <li>Automation-Projects</li>
+                <li>pt</li>
+                <li>poshtheme-distribution</li>
+              </ul>
+            </article>
+
+            <article class="lane-card lane-card-desktop">
+              <p class="card-tag">Desktop / Utility</p>
+              <h3>Windows utilities, diagnostics, and support tools</h3>
+              <p>
+                Direct machine-facing software: WinForms diagnostics, barcode
+                conversion, system helpers, and utility workflows where native
+                feel matters more than framework fashion.
+              </p>
+              <ul class="repo-list">
+                <li>WindowsTestUtility</li>
+                <li>TextToBarcode</li>
+                <li>omnifetch</li>
+              </ul>
+            </article>
+
+            <article class="lane-card lane-card-field">
+              <p class="card-tag">Field / Ops</p>
+              <h3>Operational software for inventory and reconciliation</h3>
+              <p>
+                Systems built around real workflow pressure: mobile-first
+                inventory movement, reconciliation tools, and interfaces that
+                support technicians and fleet operations.
+              </p>
+              <ul class="repo-list">
+                <li>BootTrackr</li>
+                <li>recon_assistant</li>
+              </ul>
+            </article>
+
+            <article class="lane-card lane-card-web">
+              <p class="card-tag">Web / Commerce</p>
+              <h3>Commercial and brand-facing web builds</h3>
+              <p>
+                A smaller but real lane: marketing surfaces, commerce concepts,
+                and domain-facing work that translates product claims into trust
+                and conversion.
+              </p>
+              <ul class="repo-list">
+                <li>spillkernel-site</li>
+                <li>robust-ecommerce</li>
+                <li>Robust_Road_Repair</li>
+                <li>recon_reconstruct</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="repos reveal" id="repos">
+          <div class="section-heading">
+            <p class="eyebrow">Repository map</p>
+            <h2>Every current project, surfaced as part of the same operating picture.</h2>
+          </div>
+
+          <div class="repo-matrix">
+            <article class="repo-group">
+              <p class="repo-group-label">PowerShell</p>
+              <div class="repo-pills">
+                <span class="repo-pill">posh-theme-browser</span>
+                <span class="repo-pill">Automation-Projects</span>
+                <span class="repo-pill">pt</span>
+                <span class="repo-pill">poshtheme-distribution</span>
+              </div>
+            </article>
+            <article class="repo-group">
+              <p class="repo-group-label">Python</p>
+              <div class="repo-pills">
+                <span class="repo-pill">omnifetch</span>
+                <span class="repo-pill">BootTrackr</span>
+                <span class="repo-pill">recon_assistant</span>
+              </div>
+            </article>
+            <article class="repo-group">
+              <p class="repo-group-label">C#</p>
+              <div class="repo-pills">
+                <span class="repo-pill">WindowsTestUtility</span>
+                <span class="repo-pill">TextToBarcode</span>
+              </div>
+            </article>
+            <article class="repo-group">
+              <p class="repo-group-label">Astro / Web</p>
+              <div class="repo-pills">
+                <span class="repo-pill">robust-ecommerce</span>
+                <span class="repo-pill">Robust_Road_Repair</span>
+              </div>
+            </article>
+            <article class="repo-group">
+              <p class="repo-group-label">HTML / Surface Work</p>
+              <div class="repo-pills">
+                <span class="repo-pill">spillkernel-site</span>
+                <span class="repo-pill">recon_reconstruct</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="focus-band reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Representative builds</p>
+            <h2>Three projects that define the current shape of the portfolio.</h2>
+          </div>
+
+          <div class="focus-grid">
+            <article class="focus-card">
+              <p class="card-tag">Terminal Product</p>
+              <h3>Posh Theme Browser</h3>
+              <p>
+                A Windows-first `oh-my-posh` selector with TUI previewing,
+                portable install flows, and distribution surfaces that now
+                extend into short-link bootstrap installs.
               </p>
             </article>
-            <article class="work-card featured">
-              <p class="card-tag">Shipping Now</p>
-              <h3>Install flows and public distribution surfaces</h3>
+            <article class="focus-card">
+              <p class="card-tag">Operational App</p>
+              <h3>BootTrackr</h3>
               <p>
-                Short, trustworthy delivery paths for tools, designed to feel
-                immediate without exposing more than necessary.
+                A mobile-first workflow app for field technicians, built around
+                unit-level inventory movement, offline capture, and transaction
+                logging under real operating constraints.
               </p>
             </article>
-            <article class="work-card">
-              <p class="card-tag">Automation</p>
-              <h3>Systems that remove repetitive human work</h3>
+            <article class="focus-card">
+              <p class="card-tag">Desktop Utility</p>
+              <h3>WindowsTestUtility</h3>
               <p>
-                Build once, operationalize well, and let the machine take the
-                repetitive path so the operator can stay on the hard problems.
+                A WinForms diagnostic hub for Windows hardware and system tests,
+                bridging built-in tools and local external utilities in a single
+                support-facing desktop surface.
               </p>
             </article>
           </div>
         </section>
 
-        <section class="principles reveal" id="principles">
+        <section class="command-deck reveal" id="install">
           <div class="section-heading">
-            <p class="eyebrow">Operating principles</p>
-            <h2>Everything here should read cleanly and behave decisively.</h2>
-          </div>
-          <div class="principles-grid">
-            <article class="principle-card">
-              <h3>Readable by default</h3>
-              <p>
-                Interfaces should explain themselves quickly. Good structure
-                beats decorative noise.
-              </p>
-            </article>
-            <article class="principle-card">
-              <h3>Automation with intent</h3>
-              <p>
-                The point is not to automate everything. The point is to
-                automate the right work and keep the human in the important
-                decisions.
-              </p>
-            </article>
-            <article class="principle-card">
-              <h3>Distribution matters</h3>
-              <p>
-                The install path is part of the product. Friction at the first
-                touchpoint is still product debt.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section class="command-deck reveal" id="command-deck">
-          <div class="section-heading">
-            <p class="eyebrow">Command deck</p>
-            <h2>Short, direct surfaces for the work that ships.</h2>
+            <p class="eyebrow">Install surface</p>
+            <h2>Distribution is part of the product, not a separate afterthought.</h2>
           </div>
           <div class="command-layout">
             <div class="command-card">
@@ -163,10 +281,11 @@
               </div>
             </div>
             <div class="command-card note-card">
-              <p class="command-label">Coming next</p>
+              <p class="command-label">Domain direction</p>
               <p>
-                Move the install surface to <code>pt.spillkernel.com</code> once
-                the domain routing is in place.
+                The next cleaner step is to move this surface to
+                <code>pt.spillkernel.com</code> so the install path matches the
+                rest of the brand system.
               </p>
             </div>
           </div>
@@ -181,8 +300,9 @@
           </a>
         </div>
         <p class="footer-note">
-          Built for <span id="year"></span>. Designed to grow into the home for
-          projects, docs, and install surfaces under <code>spillkernel.com</code>.
+          Built for <span id="year"></span>. Now aligned to the actual repo
+          mix: Windows-first tools, operations software, utilities, and web
+          surfaces under <code>spillkernel.com</code>.
         </p>
       </footer>
     </div>
