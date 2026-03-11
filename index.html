@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpillKernel | Tools, Automation, and Sharp Interfaces</title>
+    <meta
+      name="description"
+      content="SpillKernel builds sharp tools, automation systems, and developer-facing experiences with a bias toward clarity and execution."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="#hero">
+          <span class="brand-mark">SK</span>
+          <span class="brand-copy">
+            <strong>SpillKernel</strong>
+            <small>Systems / Tooling / Automation</small>
+          </span>
+        </a>
+        <nav class="nav">
+          <a href="#work">Work</a>
+          <a href="#principles">Principles</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero reveal" id="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Independent builder with a systems mindset</p>
+            <h1>
+              SpillKernel ships
+              <span>sharp tools</span>
+              for work that should feel lighter.
+            </h1>
+            <p class="lede">
+              I design and ship technical products that live close to the
+              operator: terminal workflows, automation systems, internal tools,
+              and interfaces that keep signal high and friction low.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="https://github.com/SpillKernelX" target="_blank" rel="noreferrer">
+                View GitHub
+              </a>
+              <a class="button button-secondary" href="#command-deck">
+                Install Surfaces
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-panel">
+            <div class="panel-card panel-card-large">
+              <p class="panel-label">Current orientation</p>
+              <ul class="signal-list">
+                <li>
+                  <span>Focus</span>
+                  <strong>Developer tools that feel product-grade</strong>
+                </li>
+                <li>
+                  <span>Pattern</span>
+                  <strong>Automate the boring, preserve operator control</strong>
+                </li>
+                <li>
+                  <span>Edge</span>
+                  <strong>Fast install paths, legible UX, durable systems</strong>
+                </li>
+              </ul>
+            </div>
+            <div class="panel-card panel-card-accent">
+              <p class="panel-label">Live thread</p>
+              <p class="panel-callout">
+                Building a brand surface for <code>spillkernel.com</code> that
+                can scale from one landing page into a full project network.
+              </p>
+            </div>
+          </aside>
+        </section>
+
+        <section class="work reveal" id="work">
+          <div class="section-heading">
+            <p class="eyebrow">Selected direction</p>
+            <h2>Projects that prioritize clarity over ceremony.</h2>
+          </div>
+          <div class="work-grid">
+            <article class="work-card">
+              <p class="card-tag">Tooling</p>
+              <h3>Prompt and terminal experiences</h3>
+              <p>
+                Command-line products that do not stop at function. Fast paths,
+                good defaults, and interfaces that reward repeat use.
+              </p>
+            </article>
+            <article class="work-card featured">
+              <p class="card-tag">Shipping Now</p>
+              <h3>Install flows and public distribution surfaces</h3>
+              <p>
+                Short, trustworthy delivery paths for tools, designed to feel
+                immediate without exposing more than necessary.
+              </p>
+            </article>
+            <article class="work-card">
+              <p class="card-tag">Automation</p>
+              <h3>Systems that remove repetitive human work</h3>
+              <p>
+                Build once, operationalize well, and let the machine take the
+                repetitive path so the operator can stay on the hard problems.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="principles reveal" id="principles">
+          <div class="section-heading">
+            <p class="eyebrow">Operating principles</p>
+            <h2>Everything here should read cleanly and behave decisively.</h2>
+          </div>
+          <div class="principles-grid">
+            <article class="principle-card">
+              <h3>Readable by default</h3>
+              <p>
+                Interfaces should explain themselves quickly. Good structure
+                beats decorative noise.
+              </p>
+            </article>
+            <article class="principle-card">
+              <h3>Automation with intent</h3>
+              <p>
+                The point is not to automate everything. The point is to
+                automate the right work and keep the human in the important
+                decisions.
+              </p>
+            </article>
+            <article class="principle-card">
+              <h3>Distribution matters</h3>
+              <p>
+                The install path is part of the product. Friction at the first
+                touchpoint is still product debt.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="command-deck reveal" id="command-deck">
+          <div class="section-heading">
+            <p class="eyebrow">Command deck</p>
+            <h2>Short, direct surfaces for the work that ships.</h2>
+          </div>
+          <div class="command-layout">
+            <div class="command-card">
+              <p class="command-label">Current public bootstrap</p>
+              <div class="code-row">
+                <code id="install-command">irm "https://raw.githubusercontent.com/SpillKernelX/pt/main/install.ps1" | iex</code>
+                <button class="copy-button" data-copy-target="install-command" type="button">Copy</button>
+              </div>
+            </div>
+            <div class="command-card note-card">
+              <p class="command-label">Coming next</p>
+              <p>
+                Move the install surface to <code>pt.spillkernel.com</code> once
+                the domain routing is in place.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer reveal" id="contact">
+        <div>
+          <p class="eyebrow">Contact / network</p>
+          <a class="footer-link" href="https://github.com/SpillKernelX" target="_blank" rel="noreferrer">
+            github.com/SpillKernelX
+          </a>
+        </div>
+        <p class="footer-note">
+          Built for <span id="year"></span>. Designed to grow into the home for
+          projects, docs, and install surfaces under <code>spillkernel.com</code>.
+        </p>
+      </footer>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
