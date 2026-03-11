@@ -29,3 +29,10 @@
 - Shifted the visual language toward a retro command-center aesthetic: orange skyline glow, cyan monitor panels, pixel-display accents, and darker server-room framing.
 - Kept the portfolio structure from the repo audit, but changed the presentation layer to match the reference image directly.
 - Added a favicon and verified the reference-driven restyle locally in both desktop and mobile browser passes.
+
+## 2026-03-11 ReconAssist Style Alignment
+
+- Replaced the image-driven treatment with the actual ReconAssist web app visual system after inspecting `web`, `manager`, and `pocket_logbook`.
+- Aligned the site to the shared ReconAssist tokens: `#0f1117` base, stacked dark surfaces, JetBrains Mono labels, DM Sans body typography, amber primary actions, and a restrained grid backdrop.
+- Kept the portfolio content structure intact while shifting the visual language to match the production app family more directly.
+- Verified the updated landing page locally after the restyle.
