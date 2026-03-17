@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>About | SpillKernel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --text-muted: #888888;
+            --accent: #e8a020;
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* GLOBAL NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text);
+        }
+
+        /* PAGE CONTENT */
+        .content {
+            flex-grow: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            margin-top: 100px;
+        }
+
+        .page-title {
+            font-size: 8rem;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 60px;
+        }
+
+        .bio {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .bio span { color: var(--text); font-weight: 500; }
+
+        /* FOOTER */
+        footer {
+            padding: 80px 0 0;
+            border-top: 1px solid #111;
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 100px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal { animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+    </style>
+</head>
+<body>
+
+    <nav class="reveal">
+        <div class="nav-logo" onclick="location.href='index.html'">SpillKernel</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="claude-overclock.html">Claude</a>
+            <a href="about.html" class="active">About</a>
+        </div>
+    </nav>
+
+    <div class="content reveal" style="animation-delay: 0.1s;">
+        <h1 class="page-title">Identity</h1>
+        <p class="bio">
+            I am a <span>Binary Architect</span> focused on building high-performance intelligence systems, autonomous engineering tools, and uncompromising digital experiences.
+        </p>
+        <p class="bio" style="font-size: 1.2rem;">
+            At SpillKernelX, we operate at the edge of the kernel—stripping away overhead to create systems that are fast, modular, and deeply integrated with modern AI infrastructure.
+        </p>
+    </div>
+
+    <footer class="reveal" style="animation-delay: 0.3s;">
+        <p>© 2026 SpillKernelX</p>
+        <p>Built for the Overclocked Era</p>
+    </footer>
+
+</body>
+</html>
