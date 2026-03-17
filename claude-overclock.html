@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">`n    <title>Claude Overclock | Portfolio Status</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Claude Overclock | SpillKernel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         :root {
@@ -22,8 +23,6 @@
             background-color: var(--bg);
             color: var(--text);
             font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
             min-height: 100vh;
             padding: 40px;
             overflow-x: hidden;
@@ -42,7 +41,7 @@
             opacity: 0;
             animation: fadeIn 3s ease-out 0.5s forwards;
         }
-        
+
         #canvas-container canvas {
             display: block;
             width: 100vw !important;
@@ -53,29 +52,46 @@
         nav {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 80px;
-            position: relative;
-            z-index: 10;
+            align-items: center;
+            padding: 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
         }
 
         .nav-logo {
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
         }
 
         .nav-links {
-            text-align: right;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            display: flex;
+            gap: 40px;
+            align-items: center;
         }
 
-        .nav-links div { color: var(--text-muted); transition: var(--transition); cursor: default; }
-        .nav-links div span { color: var(--text); font-weight: 500; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text);
+        }
 
         /* MAIN HERO SECTION */
         .hero {
+            padding-top: 200px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -208,19 +224,20 @@
 
         /* ANIMATIONS */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .animate { animation: fadeIn 1s ease-out forwards; }
+        @keyframes revealUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
     </style>
 </head>
 <body id="main-body" class="std-active">
 
     <div id="canvas-container"></div>
-    <nav class="animate">
+    <nav class="reveal">
         <div class="nav-logo" onclick="location.href='index.html'">SpillKernel</div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
-            <a href="claude-overclock.html" style="color: var(--text);">Claude</a>
+            <a href="claude-overclock.html" class="active">Claude</a>
             <a href="about.html">About</a>
             <div id="days-left-nav" style="color: var(--accent-amber); font-size: 0.7rem; margin-left: 20px; align-self: center;">
                 <span style="font-weight: 800;">--</span> DAYS LEFT
@@ -229,18 +246,18 @@
     </nav>
 
     <div class="hero">
-        <div class="hero-top animate" style="animation-delay: 0.1s;">
+        <div class="hero-top reveal" style="animation-delay: 0.1s;">
             <div class="year">2026</div>
-            <div class="section-title">Status ↓</div>
+            <div class="section-title">Status ?</div>
         </div>
 
-        <div class="status-container animate" style="animation-delay: 0.2s;">
+        <div class="status-container reveal" style="animation-delay: 0.2s;">
             <div class="status-header">Current Usage Limit</div>
-            <div id="status-main" class="status-main">Standard</div>
-            <div id="status-sub" class="status-sub">Peak hour standard limits are active.</div>
+            <div id="status-main" class="status-main">Baseline</div>
+            <div id="status-sub" class="status-sub">Peak load detected. Standard baseline quotas in effect.</div>
         </div>
 
-        <div class="timer-section animate" style="animation-delay: 0.3s;">
+        <div class="timer-section reveal" style="animation-delay: 0.3s;">
             <div class="status-header">Time Until Transition</div>
             <div class="timer-row">
                 <div class="timer-block">
@@ -259,7 +276,7 @@
         </div>
     </div>
 
-    <footer class="animate" style="animation-delay: 0.4s;">
+    <footer class="reveal" style="animation-delay: 0.4s;">
         <div class="contact-left">
             <div class="contact-info">
                 <a href="https://support.claude.com" target="_blank">Promotion Docs</a>
@@ -282,14 +299,14 @@
 
     <script>
         const PROMO_END = new Date(2026, 2, 28);
-        
+
         // --- THREE.JS SETUP (COMPUTER & AI AGENT) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-        
+
         // Shift camera to the left so the object appears on the right
-        camera.position.set(-5, 0, 22); 
+        camera.position.set(-5, 0, 22);
 
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -303,7 +320,7 @@
         });
 
         const group = new THREE.Group();
-        group.position.y = 0; 
+        group.position.y = 0;
         scene.add(group);
 
         // 1. THE COMPUTER (Minimal Terminal)
@@ -326,7 +343,7 @@
 
         // 2. THE AI AGENT (Neural Core)
         const agentGroup = new THREE.Group();
-        const coreGeom = new THREE.IcosahedronGeometry(1.2, 0); 
+        const coreGeom = new THREE.IcosahedronGeometry(1.2, 0);
         const coreMat = new THREE.MeshPhongMaterial({ color: 0xffffff, wireframe: true });
         const core = new THREE.Mesh(coreGeom, coreMat);
         agentGroup.add(core);
@@ -422,10 +439,11 @@
 
         function update() {
             const now = new Date();
-            
+
             // Days Left
             const daysLeft = Math.ceil((PROMO_END - now) / (1000 * 60 * 60 * 24));
-            document.getElementById('days-left-nav').querySelector('span').innerText = daysLeft;
+            const daysLeftNav = document.getElementById('days-left-nav');
+            if (daysLeftNav) daysLeftNav.querySelector('span').innerText = daysLeft;
 
             // PT Time
             const ptDateObj = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
@@ -433,7 +451,7 @@
             const ptMin = ptDateObj.getMinutes();
             const ptSec = ptDateObj.getSeconds();
             const ptDay = ptDateObj.getDay();
-            
+
             const isWeekend = (ptDay === 0 || ptDay === 6);
             const isStandardWindow = (ptHour >= 5 && ptHour < 11);
             const is2x = isWeekend || !isStandardWindow;
@@ -450,7 +468,7 @@
             if (is2x) {
                 body.className = "boost-active";
                 statusMain.innerText = "Overclocked";
-                
+
                 if (isWeekend) {
                     targetDayOffset = (8 - ptDay) % 7 || 7;
                     statusSub.innerText = "Weekend optimization active. 2x throughput enabled.";

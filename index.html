@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">`n    <title>SpillKernel | Engineering the Future</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>SpillKernel | Engineering the Future</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
@@ -56,11 +57,13 @@
             font-weight: 800;
             letter-spacing: -0.04em;
             text-transform: uppercase;
+            cursor: pointer;
         }
 
         .nav-links {
             display: flex;
             gap: 40px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -191,7 +194,7 @@
     <div id="canvas-container"></div>
 
     <nav class="reveal">
-        <div class="nav-logo">SpillKernel</div>
+        <div class="nav-logo" onclick="location.href='index.html'">SpillKernel</div>
         <div class="nav-links">
             <a href="index.html" class="active">Home</a>
             <a href="projects.html">Projects</a>
@@ -224,7 +227,7 @@
     <div class="watermark">SPILLKERNEL</div>
 
     <footer>
-        <p>Â© 2026 SpillKernelX</p>
+        <p>© 2026 SpillKernelX</p>
         <p>Built for the Overclocked Era</p>
     </footer>
 
