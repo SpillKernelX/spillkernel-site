@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | SpillKernel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --text-muted: #888888;
+            --accent: #e8a020;
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        /* GLOBAL NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text);
+        }
+
+        /* PAGE TITLE */
+        .page-header {
+            margin-bottom: 100px;
+        }
+
+        .page-title {
+            font-size: 8rem;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        /* PROJECT GRID */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 80px;
+            margin-bottom: 150px;
+        }
+
+        .project-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 60px;
+            transition: var(--transition);
+        }
+
+        .project-item:hover {
+            border-top-color: #333;
+        }
+
+        .project-meta {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+        }
+
+        .project-name {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 30px;
+        }
+
+        .project-desc {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .tech-tag {
+            font-size: 0.7rem;
+            background: #111;
+            padding: 6px 15px;
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-weight: 600;
+            border: 1px solid #222;
+        }
+
+        .project-visual {
+            background: #0a0a0a;
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #111;
+        }
+
+        .project-visual::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, #000 100%);
+            opacity: 0.5;
+        }
+
+        .visual-placeholder {
+            font-size: 0.7rem;
+            color: #222;
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            font-weight: 900;
+        }
+
+        /* ANIMATIONS */
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal { animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+
+    </style>
+</head>
+<body>
+
+    <nav class="reveal">
+        <div class="nav-logo" onclick="location.href='index.html'">SpillKernel</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="spillkernelx.html">KernelX</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <header class="page-header reveal" style="animation-delay: 0.1s;">
+        <h1 class="page-title">Archives</h1>
+    </header>
+
+    <div class="project-grid">
+        
+        <!-- PROJECT 1: ReconAssistant -->
+        <article class="project-item reveal" style="animation-delay: 0.2s;" id="recon">
+            <div class="project-info">
+                <p class="project-meta">01 / Artificial Intelligence</p>
+                <h2 class="project-name">ReconAssistant</h2>
+                <p class="project-desc">A multi-agent modular intelligence system designed for orchestrating complex field data, logistics, and petrol analytics through an AI-driven commander interface.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">PYTHON</span>
+                    <span class="tech-tag">FIREBASE</span>
+                    <span class="tech-tag">MULTI-AGENT</span>
+                    <span class="tech-tag">GEMINI AI</span>
+                </div>
+            </div>
+            <div class="project-visual">
+                <div class="visual-placeholder">INTEL_NODE_ALPHA</div>
+            </div>
+        </article>
+
+        <!-- PROJECT 2: PyBuildTool -->
+        <article class="project-item reveal" style="animation-delay: 0.3s;" id="build">
+            <div class="project-info">
+                <p class="project-meta">02 / Infrastructure</p>
+                <h2 class="project-name">PyBuildTool</h2>
+                <p class="project-desc">The high-fidelity Python build system. Handles complex dependencies, automated environment scrubbing, and high-speed release cycles for mission-critical software.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">SYSTEMS</span>
+                    <span class="tech-tag">BUILD OPS</span>
+                    <span class="tech-tag">AUTOMATION</span>
+                </div>
+            </div>
+            <div class="project-visual">
+                <div class="visual-placeholder">COMPILER_CORE_ACTIVE</div>
+            </div>
+        </article>
+
+        <!-- PROJECT 3: OmniFetch -->
+        <article class="project-item reveal" style="animation-delay: 0.4s;" id="fetch">
+            <div class="project-info">
+                <p class="project-meta">03 / Data Engineering</p>
+                <h2 class="project-name">OmniFetch</h2>
+                <p class="project-desc">A versatile, multi-threaded extraction engine designed to pull data from diverse protocols with surgical precision and minimal overhead.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">DENO</span>
+                    <span class="tech-tag">DOTNET</span>
+                    <span class="tech-tag">NETWORK</span>
+                </div>
+            </div>
+            <div class="project-visual">
+                <div class="visual-placeholder">UPLINK_ESTABLISHED</div>
+            </div>
+        </article>
+
+        <!-- PROJECT 4: SpillKernelX -->
+        <article class="project-item reveal" style="animation-delay: 0.5s;" id="kernelx">
+            <div class="project-info">
+                <p class="project-meta">04 / Utility & Monitoring</p>
+                <h2 class="project-name" style="cursor: pointer;" onclick="location.href='spillkernelx.html'">SpillKernelX</h2>
+                <p class="project-desc">A high-fidelity monitoring node for the Anthropic ecosystem. Tracks usage-doubling promotions in real-time with integrated 3D status diagnostics.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">THREE.JS</span>
+                    <span class="tech-tag">REAL-TIME</span>
+                    <span class="tech-tag">INTELLIGENCE</span>
+                </div>
+            </div>
+            <div class="project-visual" style="cursor: pointer;" onclick="location.href='spillkernelx.html'">
+                <div class="visual-placeholder">MONITORING_ACTIVE</div>
+            </div>
+        </article>
+
+    </div>
+
+    <script>
+        // Smooth entrance for reveal elements
+        document.querySelectorAll('.reveal').forEach((el, i) => {
+            el.style.opacity = "1";
+        });
+    </script>
+</body>
+</html>

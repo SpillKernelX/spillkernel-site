@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpillKernelX | Portfolio Status</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --text-muted: #888888;
+            --accent: #ff3b30;
+            --accent-amber: #e8a020; /* Sentinel Amber */
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 40px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 3D CANVAS */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Move to background */
+            pointer-events: none;
+            opacity: 0;
+            animation: fadeIn 3s ease-out 0.5s forwards;
+        }
+        
+        #canvas-container canvas {
+            display: block;
+            width: 100vw !important;
+            height: 100vh !important;
+        }
+
+        /* HEADER NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            text-align: right;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .nav-links div { color: var(--text-muted); transition: var(--transition); cursor: default; }
+        .nav-links div span { color: var(--text); font-weight: 500; }
+
+        /* MAIN HERO SECTION */
+        .hero {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+        }
+
+        .year {
+            font-size: 4rem;
+            font-weight: 200;
+            color: #1a1a1a;
+            letter-spacing: -0.05em;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+        }
+
+        /* STATUS DISPLAY */
+        .status-container {
+            border-top: 1px solid #1a1a1a;
+            padding-top: 40px;
+            margin-bottom: 120px;
+        }
+
+        .status-header {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .status-main {
+            font-size: 8rem;
+            font-weight: 700;
+            letter-spacing: -0.06em;
+            line-height: 0.9;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .boost-active .status-main { color: var(--accent-amber); text-shadow: 0 0 40px rgba(232, 160, 32, 0.2); }
+        .std-active .status-main { color: var(--text); }
+
+        .status-sub {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-top: 20px;
+            color: var(--text-muted);
+        }
+
+        /* TIMER SECTION */
+        .timer-section {
+            margin-bottom: 120px;
+        }
+
+        .timer-row {
+            display: flex;
+            gap: 40px;
+            align-items: baseline;
+        }
+
+        .timer-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timer-val {
+            font-size: 6rem;
+            font-weight: 100;
+            letter-spacing: -0.05em;
+            line-height: 1;
+        }
+
+        .timer-lbl {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        /* FOOTER CLOCKS */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 40px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .contact-info {
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-info a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--text); }
+        .location { font-size: 1rem; color: var(--text-muted); margin-top: 10px; }
+
+        .footer-clocks {
+            display: flex;
+            gap: 60px;
+            text-align: right;
+        }
+
+        .clock-box p:first-child { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 5px; }
+        .clock-box p:last-child { font-size: 1.2rem; font-weight: 500; }
+
+        .big-footer-text {
+            font-size: 12vw;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: #0a0a0a;
+            position: absolute;
+            bottom: -2vw;
+            left: 40px;
+            z-index: -1;
+            line-height: 1;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate { animation: fadeIn 1s ease-out forwards; }
+
+    </style>
+</head>
+<body id="main-body" class="std-active">
+
+    <div id="canvas-container"></div>
+    <nav class="animate">
+        <div class="nav-logo" onclick="location.href='index.html'">SpillKernel</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="spillkernelx.html" style="color: var(--text);">KernelX</a>
+            <a href="about.html">About</a>
+            <div id="days-left-nav" style="color: var(--accent-amber); font-size: 0.7rem; margin-left: 20px; align-self: center;">
+                <span style="font-weight: 800;">--</span> DAYS LEFT
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-top animate" style="animation-delay: 0.1s;">
+            <div class="year">2026</div>
+            <div class="section-title">Status ↓</div>
+        </div>
+
+        <div class="status-container animate" style="animation-delay: 0.2s;">
+            <div class="status-header">Current Usage Limit</div>
+            <div id="status-main" class="status-main">Standard</div>
+            <div id="status-sub" class="status-sub">Peak hour standard limits are active.</div>
+        </div>
+
+        <div class="timer-section animate" style="animation-delay: 0.3s;">
+            <div class="status-header">Time Until Transition</div>
+            <div class="timer-row">
+                <div class="timer-block">
+                    <span id="h-val" class="timer-val">00</span>
+                    <span class="timer-lbl">Hours</span>
+                </div>
+                <div class="timer-block">
+                    <span id="m-val" class="timer-val">00</span>
+                    <span class="timer-lbl">Minutes</span>
+                </div>
+                <div class="timer-block">
+                    <span id="s-val" class="timer-val">00</span>
+                    <span class="timer-lbl">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="animate" style="animation-delay: 0.4s;">
+        <div class="contact-left">
+            <div class="contact-info">
+                <a href="https://support.claude.com" target="_blank">Promotion Docs</a>
+            </div>
+            <div id="days-remaining-footer" class="location">-- Days Remaining in Cycle</div>
+        </div>
+        <div class="footer-clocks">
+            <div class="clock-box">
+                <p>Local Time</p>
+                <p id="local-clock">--:--</p>
+            </div>
+            <div class="clock-box">
+                <p>Pacific Time</p>
+                <p id="pt-clock">--:--</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="big-footer-text">@SPILLKERNELX</div>
+
+    <script>
+        const PROMO_END = new Date(2026, 2, 28);
+        
+        // --- THREE.JS SETUP (COMPUTER & AI AGENT) ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        
+        // Shift camera to the left so the object appears on the right
+        camera.position.set(-5, 0, 22); 
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        const group = new THREE.Group();
+        group.position.y = 0; 
+        scene.add(group);
+
+        // 1. THE COMPUTER (Minimal Terminal)
+        const computer = new THREE.Group();
+        const monitorGeom = new THREE.BoxGeometry(6, 4.2, 0.2); // Slightly smaller scale
+        const wireframeMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.15 });
+        const monitor = new THREE.Mesh(monitorGeom, wireframeMat);
+        computer.add(monitor);
+
+        // Screen Content (Scrolling Data Texture)
+        const canvas = document.createElement('canvas');
+        canvas.width = 512; canvas.height = 512;
+        const ctx = canvas.getContext('2d');
+        const screenTex = new THREE.CanvasTexture(canvas);
+        const screenMat = new THREE.MeshBasicMaterial({ map: screenTex, transparent: true, opacity: 0.6 });
+        const screen = new THREE.Mesh(new THREE.PlaneGeometry(5.7, 3.9), screenMat);
+        screen.position.z = 0.11;
+        computer.add(screen);
+        group.add(computer);
+
+        // 2. THE AI AGENT (Neural Core)
+        const agentGroup = new THREE.Group();
+        const coreGeom = new THREE.IcosahedronGeometry(1.2, 0); 
+        const coreMat = new THREE.MeshPhongMaterial({ color: 0xffffff, wireframe: true });
+        const core = new THREE.Mesh(coreGeom, coreMat);
+        agentGroup.add(core);
+
+        const shell = new THREE.Mesh(
+            new THREE.SphereGeometry(1.8, 32, 32),
+            new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.05, shininess: 100 })
+        );
+        agentGroup.add(shell);
+        group.add(agentGroup);
+
+        // 3. THE UPLINK (Particles)
+        const particleCount = 120;
+        const pointsGeom = new THREE.BufferGeometry();
+        const coords = new Float32Array(particleCount * 3);
+        for(let i=0; i<particleCount; i++) {
+            coords[i*3] = 0; coords[i*3+1] = 0; coords[i*3+2] = 0;
+        }
+        pointsGeom.setAttribute('position', new THREE.BufferAttribute(coords, 3));
+        const pointsMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.15, transparent: true, blending: THREE.AdditiveBlending });
+        const uplink = new THREE.Points(pointsGeom, pointsMat);
+        group.add(uplink);
+
+        // Lighting
+        const light = new THREE.PointLight(0xffffff, 3, 60);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+
+        // State
+        var currentLightColor = new THREE.Color(0xff3b30);
+        var targetLightColor = new THREE.Color(0xff3b30);
+        let rotationSpeed = 0.01;
+        let dataSpeed = 1.5;
+
+        function update3DState(isBoosted) {
+            if (isBoosted) {
+                targetLightColor.setHex(0xe8a020); // Sentinel Amber
+                rotationSpeed = 0.03;
+                dataSpeed = 4;
+            } else {
+                targetLightColor.setHex(0xff3b30); // Red
+                rotationSpeed = 0.008;
+                dataSpeed = 1.2;
+            }
+        }
+
+        const lines = [];
+        for(let i=0; i<25; i++) lines.push(Math.random() * 512);
+
+        function animate3D() {
+            requestAnimationFrame(animate3D);
+            const time = Date.now() * 0.001;
+
+            // 1. Update Screen Texture
+            ctx.fillStyle = '#000'; ctx.fillRect(0,0,512,512);
+            ctx.fillStyle = '#' + targetLightColor.getHexString();
+            ctx.font = '16px monospace';
+            for(let i=0; i<lines.length; i++) {
+                lines[i] = (lines[i] + dataSpeed) % 512;
+                ctx.fillText("010110100110101010011010101101010101010", 20, lines[i]);
+            }
+            screenTex.needsUpdate = true;
+
+            // 2. Animate Agent (Tighter Orbit, closer to center)
+            agentGroup.position.x = Math.cos(time * rotationSpeed * 12) * 6.5;
+            agentGroup.position.z = Math.sin(time * rotationSpeed * 12) * 4;
+            agentGroup.position.y = Math.sin(time * 1.5) * 1.5;
+            core.rotation.x += rotationSpeed;
+            core.rotation.y += rotationSpeed * 1.2;
+
+            // 3. Animate Uplink
+            const positions = uplink.geometry.attributes.position.array;
+            for(let i=0; i<particleCount; i++) {
+                const t = ((time * dataSpeed * 0.15) + (i/particleCount)) % 1;
+                positions[i*3] = computer.position.x * (1-t) + agentGroup.position.x * t;
+                positions[i*3+1] = computer.position.y * (1-t) + agentGroup.position.y * t;
+                positions[i*3+2] = computer.position.z * (1-t) + agentGroup.position.z * t;
+            }
+            uplink.geometry.attributes.position.needsUpdate = true;
+
+            // 4. Update Colors
+            currentLightColor.lerp(targetLightColor, 0.05);
+            coreMat.color.copy(currentLightColor);
+            pointsMat.color.copy(currentLightColor);
+            light.color.copy(currentLightColor);
+            light.position.copy(agentGroup.position);
+
+            group.rotation.y = Math.sin(time * 0.2) * 0.3; // Subtle sway instead of full rotation
+            renderer.render(scene, camera);
+        }
+
+        animate3D();
+
+        function update() {
+            const now = new Date();
+            
+            // Days Left
+            const daysLeft = Math.ceil((PROMO_END - now) / (1000 * 60 * 60 * 24));
+            document.getElementById('days-left-nav').querySelector('span').innerText = daysLeft;
+
+            // PT Time
+            const ptDateObj = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
+            const ptHour = ptDateObj.getHours();
+            const ptMin = ptDateObj.getMinutes();
+            const ptSec = ptDateObj.getSeconds();
+            const ptDay = ptDateObj.getDay();
+            
+            const isWeekend = (ptDay === 0 || ptDay === 6);
+            const isStandardWindow = (ptHour >= 5 && ptHour < 11);
+            const is2x = isWeekend || !isStandardWindow;
+
+            // UI Elements
+            const body = document.getElementById('main-body');
+            const statusMain = document.getElementById('status-main');
+            const statusSub = document.getElementById('status-sub');
+
+            let targetDayOffset = 0;
+            let targetHour = 5;
+            let start, end;
+
+            if (is2x) {
+                body.className = "boost-active";
+                statusMain.innerText = "Overclocked";
+                
+                if (isWeekend) {
+                    targetDayOffset = (8 - ptDay) % 7 || 7;
+                    statusSub.innerText = "Weekend optimization active. 2x throughput enabled.";
+                    start = new Date(ptDateObj); start.setDate(start.getDate() - 2);
+                } else {
+                    targetDayOffset = (ptHour >= 11) ? 1 : 0;
+                    statusSub.innerText = "Off-peak cycle engaged. Enjoy overclocked limits.";
+                    start = new Date(ptDateObj); start.setHours(11, 0, 0, 0);
+                    if (ptHour < 5) start.setDate(start.getDate() - 1);
+                }
+                targetHour = 5;
+            } else {
+                body.className = "std-active";
+                statusMain.innerText = "Baseline";
+                statusSub.innerText = "Peak load detected. Standard baseline quotas in effect.";
+                targetDayOffset = 0;
+                targetHour = 11;
+                start = new Date(ptDateObj); start.setHours(5, 0, 0, 0);
+            }
+
+            const targetWallTime = new Date(ptDateObj);
+            targetWallTime.setDate(targetWallTime.getDate() + targetDayOffset);
+            targetWallTime.setHours(targetHour, 0, 0, 0);
+            end = targetWallTime;
+
+            const diffMs = targetWallTime - ptDateObj;
+            document.getElementById('h-val').innerText = String(Math.max(0, Math.floor(diffMs / 3600000))).padStart(2, '0');
+            document.getElementById('m-val').innerText = String(Math.max(0, Math.floor((diffMs % 3600000) / 60000))).padStart(2, '0');
+            document.getElementById('s-val').innerText = String(Math.max(0, Math.floor((diffMs % 60000) / 1000))).padStart(2, '0');
+
+            document.getElementById('local-clock').innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('pt-clock').innerText = `${String(ptHour).padStart(2, '0')}:${String(ptMin).padStart(2, '0')} PT`;
+
+            // Update 3D Lighting
+            if (typeof update3DState === 'function') {
+                update3DState(is2x);
+            }
+
+            // Update Footer Description
+            const daysRemainingFooter = document.getElementById('days-remaining-footer');
+            if (daysRemainingFooter) {
+                daysRemainingFooter.innerText = daysLeft + " Days Remaining in Cycle";
+            }
+        }
+
+        setInterval(update, 1000);
+        update();
+    </script>
+</body>
+</html>

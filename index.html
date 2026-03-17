@@ -1,312 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SpillKernel | Windows Tooling, Automation, and Operational Software</title>
-    <meta
-      name="description"
-      content="SpillKernel builds Windows-first tools, PowerShell automation, desktop utilities, field systems, and install surfaces across PowerShell, Python, C#, Astro, and HTML."
-    />
-    <meta name="theme-color" content="#0f1117" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <div class="ambient-glow ambient-glow-left"></div>
-    <div class="ambient-glow ambient-glow-right"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpillKernel | Engineering the Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --text-muted: #888888;
+            --accent: #e8a020; /* Sentinel Amber */
+            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-    <div class="site-shell">
-      <header class="topbar">
-        <a class="brand" href="#hero">
-          <span class="brand-mark">SK</span>
-          <span class="brand-copy">
-            <strong>SpillKernel</strong>
-            <small>Windows Tooling / Automation / Systems</small>
-          </span>
-        </a>
-        <nav class="nav">
-          <a href="#lanes">Lanes</a>
-          <a href="#repos">Repos</a>
-          <a href="#install">Install</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
 
-      <main>
-        <section class="hero reveal" id="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">13 repositories across five stacks</p>
-            <h1>
-              SpillKernel builds
-              <span>Windows-native tools</span>
-              and operational software that ships close to the operator.
-            </h1>
-            <p class="lede">
-              The work is not one narrow product lane. It spans PowerShell
-              automation, terminal tooling, Python utilities, C# desktop apps,
-              field workflows, and a smaller layer of web and commerce builds.
-              The site should feel like a control surface for that mix.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="https://github.com/SpillKernelX" target="_blank" rel="noreferrer">
-                Browse GitHub
-              </a>
-              <a class="button button-secondary" href="#repos">
-                View Repository Map
-              </a>
-            </div>
-          </div>
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-          <aside class="hero-panel">
-            <div class="panel-card panel-card-large">
-              <p class="panel-label">Stack profile</p>
-              <ul class="signal-list">
-                <li>
-                  <span>Primary spread</span>
-                  <strong>PowerShell 4 / Python 3 / C# 2 / Astro 2 / HTML 2</strong>
-                </li>
-                <li>
-                  <span>Project bias</span>
-                  <strong>Windows-first tooling, utilities, diagnostics, install flows</strong>
-                </li>
-                <li>
-                  <span>Execution mode</span>
-                  <strong>Desktop apps, shell products, field systems, lean web builds</strong>
-                </li>
-              </ul>
-            </div>
-            <div class="panel-card panel-card-accent">
-              <p class="panel-label">Portfolio signal</p>
-              <p class="panel-callout">
-                This is a builder profile with an operator mindset: practical,
-                systems-oriented, Windows-heavy, and comfortable across shell,
-                desktop, browser, and install surfaces.
-              </p>
-            </div>
-          </aside>
-        </section>
+        /* 3D CANVAS BACKGROUND */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
 
-        <section class="lane-strip reveal">
-          <article class="metric-card">
-            <span class="metric-number">13</span>
-            <span class="metric-label">Total repositories</span>
-          </article>
-          <article class="metric-card">
-            <span class="metric-number">10</span>
-            <span class="metric-label">Private workstreams</span>
-          </article>
-          <article class="metric-card">
-            <span class="metric-number">3</span>
-            <span class="metric-label">Public distribution surfaces</span>
-          </article>
-          <article class="metric-card">
-            <span class="metric-number">5</span>
-            <span class="metric-label">Primary stacks in active rotation</span>
-          </article>
-        </section>
+        /* GLOBAL NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
 
-        <section class="lanes reveal" id="lanes">
-          <div class="section-heading">
-            <p class="eyebrow">Project lanes</p>
-            <h2>The work clusters into four clear product lines.</h2>
-          </div>
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+        }
 
-          <div class="lane-grid">
-            <article class="lane-card lane-card-shell">
-              <p class="card-tag">Shell / Automation</p>
-              <h3>PowerShell-first tooling and install surfaces</h3>
-              <p>
-                Terminal-native experiences, script collections, portable
-                installers, and public distribution flows built for repeat use
-                on Windows machines.
-              </p>
-              <ul class="repo-list">
-                <li>posh-theme-browser</li>
-                <li>Automation-Projects</li>
-                <li>pt</li>
-                <li>poshtheme-distribution</li>
-              </ul>
-            </article>
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
 
-            <article class="lane-card lane-card-desktop">
-              <p class="card-tag">Desktop / Utility</p>
-              <h3>Windows utilities, diagnostics, and support tools</h3>
-              <p>
-                Direct machine-facing software: WinForms diagnostics, barcode
-                conversion, system helpers, and utility workflows where native
-                feel matters more than framework fashion.
-              </p>
-              <ul class="repo-list">
-                <li>WindowsTestUtility</li>
-                <li>TextToBarcode</li>
-                <li>omnifetch</li>
-              </ul>
-            </article>
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+        }
 
-            <article class="lane-card lane-card-field">
-              <p class="card-tag">Field / Ops</p>
-              <h3>Operational software for inventory and reconciliation</h3>
-              <p>
-                Systems built around real workflow pressure: mobile-first
-                inventory movement, reconciliation tools, and interfaces that
-                support technicians and fleet operations.
-              </p>
-              <ul class="repo-list">
-                <li>BootTrackr</li>
-                <li>recon_assistant</li>
-              </ul>
-            </article>
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text);
+        }
 
-            <article class="lane-card lane-card-web">
-              <p class="card-tag">Web / Commerce</p>
-              <h3>Commercial and brand-facing web builds</h3>
-              <p>
-                A smaller but real lane: marketing surfaces, commerce concepts,
-                and domain-facing work that translates product claims into trust
-                and conversion.
-              </p>
-              <ul class="repo-list">
-                <li>spillkernel-site</li>
-                <li>robust-ecommerce</li>
-                <li>Robust_Road_Repair</li>
-                <li>recon_reconstruct</li>
-              </ul>
-            </article>
-          </div>
-        </section>
+        /* HERO SECTION */
+        .hero {
+            padding: 200px 40px 100px;
+            max-width: 1200px;
+            flex-grow: 1;
+        }
 
-        <section class="repos reveal" id="repos">
-          <div class="section-heading">
-            <p class="eyebrow">Repository map</p>
-            <h2>Every current project, surfaced as part of the same operating picture.</h2>
-          </div>
+        .hero-year {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 20px;
+            letter-spacing: 0.2em;
+        }
 
-          <div class="repo-matrix">
-            <article class="repo-group">
-              <p class="repo-group-label">PowerShell</p>
-              <div class="repo-pills">
-                <span class="repo-pill">posh-theme-browser</span>
-                <span class="repo-pill">Automation-Projects</span>
-                <span class="repo-pill">pt</span>
-                <span class="repo-pill">poshtheme-distribution</span>
-              </div>
-            </article>
-            <article class="repo-group">
-              <p class="repo-group-label">Python</p>
-              <div class="repo-pills">
-                <span class="repo-pill">omnifetch</span>
-                <span class="repo-pill">BootTrackr</span>
-                <span class="repo-pill">recon_assistant</span>
-              </div>
-            </article>
-            <article class="repo-group">
-              <p class="repo-group-label">C#</p>
-              <div class="repo-pills">
-                <span class="repo-pill">WindowsTestUtility</span>
-                <span class="repo-pill">TextToBarcode</span>
-              </div>
-            </article>
-            <article class="repo-group">
-              <p class="repo-group-label">Astro / Web</p>
-              <div class="repo-pills">
-                <span class="repo-pill">robust-ecommerce</span>
-                <span class="repo-pill">Robust_Road_Repair</span>
-              </div>
-            </article>
-            <article class="repo-group">
-              <p class="repo-group-label">HTML / Surface Work</p>
-              <div class="repo-pills">
-                <span class="repo-pill">spillkernel-site</span>
-                <span class="repo-pill">recon_reconstruct</span>
-              </div>
-            </article>
-          </div>
-        </section>
+        .hero-title {
+            font-size: 10vw;
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.06em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
 
-        <section class="focus-band reveal">
-          <div class="section-heading">
-            <p class="eyebrow">Representative builds</p>
-            <h2>Three projects that define the current shape of the portfolio.</h2>
-          </div>
+        .hero-sub {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.4;
+        }
 
-          <div class="focus-grid">
-            <article class="focus-card">
-              <p class="card-tag">Terminal Product</p>
-              <h3>Posh Theme Browser</h3>
-              <p>
-                A Windows-first `oh-my-posh` selector with TUI previewing,
-                portable install flows, and distribution surfaces that now
-                extend into short-link bootstrap installs.
-              </p>
-            </article>
-            <article class="focus-card">
-              <p class="card-tag">Operational App</p>
-              <h3>BootTrackr</h3>
-              <p>
-                A mobile-first workflow app for field technicians, built around
-                unit-level inventory movement, offline capture, and transaction
-                logging under real operating constraints.
-              </p>
-            </article>
-            <article class="focus-card">
-              <p class="card-tag">Desktop Utility</p>
-              <h3>WindowsTestUtility</h3>
-              <p>
-                A WinForms diagnostic hub for Windows hardware and system tests,
-                bridging built-in tools and local external utilities in a single
-                support-facing desktop surface.
-              </p>
-            </article>
-          </div>
-        </section>
+        /* PROJECT PREVIEW GRID */
+        .project-preview {
+            padding: 100px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px; /* Thin divider lines */
+            background: #111;
+            border-top: 1px solid #222;
+        }
 
-        <section class="command-deck reveal" id="install">
-          <div class="section-heading">
-            <p class="eyebrow">Install surface</p>
-            <h2>Distribution is part of the product, not a separate afterthought.</h2>
-          </div>
-          <div class="command-layout">
-            <div class="command-card">
-              <p class="command-label">Current public bootstrap</p>
-              <div class="code-row">
-                <code id="install-command">irm "https://raw.githubusercontent.com/SpillKernelX/pt/main/install.ps1" | iex</code>
-                <button class="copy-button" data-copy-target="install-command" type="button">Copy</button>
-              </div>
-            </div>
-            <div class="command-card note-card">
-              <p class="command-label">Domain direction</p>
-              <p>
-                The next cleaner step is to move this surface to
-                <code>pt.spillkernel.com</code> so the install path matches the
-                rest of the brand system.
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
+        .preview-card {
+            background: var(--bg);
+            padding: 60px;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
 
-      <footer class="footer reveal" id="contact">
-        <div>
-          <p class="eyebrow">Contact / network</p>
-          <a class="footer-link" href="https://github.com/SpillKernelX" target="_blank" rel="noreferrer">
-            github.com/SpillKernelX
-          </a>
+        .preview-card:hover {
+            background: #0a0a0a;
+        }
+
+        .preview-tag {
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 10px;
+        }
+
+        .preview-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .preview-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 300px;
+            line-height: 1.6;
+        }
+
+        /* BIG WATERMARK */
+        .watermark {
+            font-size: 20vw;
+            font-weight: 950;
+            color: #080808;
+            position: absolute;
+            bottom: -5vw;
+            left: 0;
+            z-index: -2;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        footer {
+            padding: 80px 40px;
+            border-top: 1px solid #111;
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ANIMATIONS */
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal { animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+    </style>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+
+    <nav class="reveal">
+        <div class="nav-logo">SpillKernel</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="spillkernelx.html">KernelX</a>
+            <a href="about.html">About</a>
         </div>
-        <p class="footer-note">
-          Built for <span id="year"></span>. Now aligned to the actual repo
-          mix: Windows-first tools, operations software, utilities, and web
-          surfaces under <code>spillkernel.com</code>.
-        </p>
-      </footer>
-    </div>
+    </nav>
 
-    <script src="./script.js"></script>
-  </body>
+    <main class="hero">
+        <div class="hero-year reveal" style="animation-delay: 0.2s;">EST. 2026</div>
+        <h1 class="hero-title reveal" style="animation-delay: 0.3s;">Binary<br>Architect</h1>
+        <p class="hero-sub reveal" style="animation-delay: 0.4s;">
+            Crafting high-performance intelligence systems and autonomous engineering tools at the edge of the kernel.
+        </p>
+    </main>
+
+    <section class="project-preview reveal" style="animation-delay: 0.6s;">
+        <div class="preview-card" onclick="location.href='projects.html#recon'">
+            <p class="preview-tag">Intelligence</p>
+            <h2 class="preview-name">ReconAssistant</h2>
+            <p class="preview-desc">Multi-agent intelligence manager for complex field data orchestration.</p>
+        </div>
+        <div class="preview-card" onclick="location.href='projects.html#build'">
+            <p class="preview-tag">Infrastructure</p>
+            <h2 class="preview-name">PyBuildTool</h2>
+            <p class="preview-desc">High-speed Python orchestration and automated release management.</p>
+        </div>
+    </section>
+
+    <div class="watermark">SPILLKERNEL</div>
+
+    <footer>
+        <p>© 2026 SpillKernel Systems</p>
+        <p>Built for the Overclocked Era</p>
+    </footer>
+
+    <script>
+        // --- THREE.JS HOME HERO (DNA KERNEL) ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(5, 2, 20);
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Create a "Holographic Kernel" (Spinning DNA-like double helix of particles)
+        const kernelGroup = new THREE.Group();
+        scene.add(kernelGroup);
+
+        const particleCount = 1000;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        const colorAmber = new THREE.Color(0xe8a020);
+
+        for (let i = 0; i < particleCount; i++) {
+            // DNA Helix Formula
+            const t = (i / particleCount) * Math.PI * 8;
+            const helixSide = (i % 2 === 0) ? 1 : -1;
+            
+            const x = Math.cos(t) * 4 * helixSide;
+            const y = (i / particleCount) * 20 - 10;
+            const z = Math.sin(t) * 4 * helixSide;
+
+            positions[i * 3] = x;
+            positions[i * 3 + 1] = y;
+            positions[i * 3 + 2] = z;
+
+            colors[i * 3] = colorAmber.r;
+            colors[i * 3 + 1] = colorAmber.g;
+            colors[i * 3 + 2] = colorAmber.b;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 0.08,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.6,
+            blending: THREE.AdditiveBlending
+        });
+
+        const points = new THREE.Points(geometry, material);
+        kernelGroup.add(points);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            kernelGroup.rotation.y += 0.002;
+            kernelGroup.rotation.z += 0.001;
+            
+            const time = Date.now() * 0.001;
+            points.rotation.y = Math.sin(time * 0.5) * 0.2;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
 </html>
