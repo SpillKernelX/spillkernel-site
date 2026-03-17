@@ -177,6 +177,43 @@
 
         .reveal { animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
 
+    
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+                background: rgba(0,0,0,0.9);
+                backdrop-filter: blur(10px);
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .page-header {
+                padding-top: 150px;
+                margin-bottom: 60px;
+            }
+            .page-title {
+                font-size: 4rem;
+            }
+            .project-item {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .project-name {
+                font-size: 2.5rem;
+            }
+            .project-visual {
+                aspect-ratio: 4/3;
+                order: -1; /* Move image above text on mobile */
+            }
+            .project-grid {
+                gap: 60px;
+            }
+        }
     </style>
 </head>
 <body>
